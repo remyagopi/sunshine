@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{% block body%}
+<br>
+    <br>
+  <div class="container">
+      <div class="row">
+          <div class="col-sm">
+    <div class="card" style="margin: 0 auto;float: none;margin-bottom: 10px;width: 15cm">
+        <img class="card-img-top" src="{{query.images.url}}" alt="Card image cap" style="height: 7cm">
+        <div class="card-body"><h1>{{query.title}}</h1>
+         <br>
+        <p>{{query.content}}</p>
+        </div>
+     <br>
+        <br>
+        <p>Author: {{query.user}}</p>
+    </div>
+          </div>
+      </div>
+  </div>
+
+<br>
+
+{% if request.user == query.user %}
+<a href="{% url 'post:delete' query.id%}" class="btn btn-danger">Delete</a>
+<a href="{% url 'post:update' query.id%}" class="btn btn-success">Update</a>
+{% endif %}
+
+
+
+{% endblock %}
